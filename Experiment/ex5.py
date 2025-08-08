@@ -9,11 +9,14 @@ while True:
         case "add":
             todo = input("Enter your todo:")
             todos.append(todo)
-        case "show":
+        case "show" | "display":
             for item in todos:
                 print(item)
         case "exit":
             break
+        case whatever:
+            print("Hey, you entered wrong command")
+
 print("Goodbye!")
     
     
