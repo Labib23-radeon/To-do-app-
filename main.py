@@ -12,10 +12,8 @@ while True:
 
             todos.append(todo)
 
-
-
             with open('todos.txt', 'w') as file:
-                todos = file.writelines()
+                file.writelines(todos)
 
         case "show":
 
@@ -56,5 +54,3 @@ while True:
         case "exit":
             break
 print("Goodbye!")
-    
-    
