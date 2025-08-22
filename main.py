@@ -3,9 +3,8 @@ while True:
     user_action = input("Type add, show, edit, complete or exit todo:")
     user_action = user_action.strip()
     
-    match user_action:
-        case "add":
-            todo = input("Enter your todo:") + "\n"
+    if "add" in user_action:
+            todo = user_action[4:]
 
             with open('todos.txt', 'r') as file:
                 todos = file.readlines()
@@ -15,7 +14,7 @@ while True:
             with open('todos.txt', 'w') as file:
                 file.writelines(todos)
 
-        case "show":
+    elif "show" in user_action:
 
             with open('todos.txt', 'r') as file:
                 todos = file.readlines()
@@ -24,8 +23,8 @@ while True:
                 item = item.strip("\n")
                 row = f"{index+1}-{item}"
                 print(row)
-        case "edit":
-            number = int(input("Enter the number of the todo to edit:"))
+    elif "edit" in user_action:
+            number = int(user_action[5:])
             number = number -1 
 
             with open ('todos.txt', 'r') as file:
@@ -39,8 +38,8 @@ while True:
             print ('Here your todos after editing:', todos)
 
             print("Todo updated successfully.")
-        case "complete":
-            number = int(input("Enter the number of the todo to complete:"))
+    elif "complete" in user_action:
+            number = int(user_action[9:])
             with open('todos.txt', 'r') as file:
                 todos = file.readlines()
             index = number - 1
@@ -51,6 +50,8 @@ while True:
                 file.writelines(todos)
             message = f"Todo {todo_to_remove} completed and removed from the list."
             print(message) 
-        case "exit":
+    elif "exit" in user_action:
             break
+    else:
+         print("Command is not valid, please try again.")
 print("Goodbye!")
